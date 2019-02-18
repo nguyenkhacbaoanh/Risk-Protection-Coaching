@@ -2,6 +2,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from textwrap import dedent
 # import glob
 import os
 import plotly.graph_objs as go
@@ -12,7 +13,7 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #static_image_route = '/static/'
 #print(list_of_images)
 external_stylesheets = ['static/css/main.css']
-
+# print(helpq(go.Table))
 def dash_app(server):
     app = dash.Dash(__name__,server=server, external_stylesheets=external_stylesheets)
 
@@ -23,7 +24,7 @@ def dash_app(server):
             'Risques': {
                 'Actuel': {
                     'Matériels': {
-                        'impact': 5000,
+                        'impact': 4000,
                         'fréquence': 3 
                     },
                     'Immatériels non consécultif': {
@@ -39,11 +40,11 @@ def dash_app(server):
                         'fréquence': 2
                     },
                     'Dommage système informatique': {
-                        'impact': 10000,
+                        'impact': 12000,
                         'fréquence': 2
                     },
                     'Litige avec client': {
-                        'impact': 5000,
+                        'impact': 6500,
                         'fréquence': 3
                     },
                     'Virus': {
@@ -55,11 +56,11 @@ def dash_app(server):
                         'fréquence': 1
                     },
                     'Explosion, Incendie, Dommage électrique': {
-                        'impact': 20000,
+                        'impact': 18000,
                         'fréquence': 1
                     },
                     'Machine': {
-                        'impact': 10000,
+                        'impact': 11000,
                         'fréquence': 1
                     },
                     'Incendie/Explosion': {
@@ -71,7 +72,7 @@ def dash_app(server):
                         'fréquence': 1
                     },
                     'Arrêt du travail': {
-                        'impact': 5000,
+                        'impact': 6000,
                         'fréquence': 2
                     },
                     'Optique': {
@@ -85,7 +86,7 @@ def dash_app(server):
                 },
                 'Future': {
                     'Matériels': {
-                        'impact': 5000,
+                        'impact': 4000,
                         'fréquence': 3 
                     },
                     'Immatériels non consécultif': {
@@ -101,11 +102,11 @@ def dash_app(server):
                         'fréquence': 2
                     },
                     'Dommage système informatique': {
-                        'impact': 10000,
+                        'impact': 12000,
                         'fréquence': 2
                     },
                     'Litige avec client': {
-                        'impact': 5000,
+                        'impact': 6500,
                         'fréquence': 3
                     },
                     'Virus': {
@@ -117,11 +118,11 @@ def dash_app(server):
                         'fréquence': 1
                     },
                     'Explosion, Incendie, Dommage électrique': {
-                        'impact': 20000,
+                        'impact': 18000,
                         'fréquence': 1
                     },
                     'Machine': {
-                        'impact': 10000,
+                        'impact': 11000,
                         'fréquence': 1
                     },
                     'Incendie/Explosion': {
@@ -133,15 +134,127 @@ def dash_app(server):
                         'fréquence': 1
                     },
                     'Arrêt du travail': {
-                        'impact': 10000,
+                        'impact': 9000,
                         'fréquence': 2
                     },
                     'Optique': {
-                        'impact': 4000,
+                        'impact': 6600,
                         'fréquence': 5
                     },
                     'Soins Courants': {
+                        'impact': 5700,
+                        'fréquence': 5
+                    }
+                }
+            }
+        },
+        'Laura': {
+            'Risques': {
+                'Actuel': {
+                    'Accident du travail': {
                         'impact': 3000,
+                        'fréquence': 5
+                    },
+                    'endommagé du bien': {
+                        'impact': 1000,
+                        'fréquence': 5
+                    },
+                    'dommage le système informatique': {
+                        'impact': 1500,
+                        'fréquence': 3
+                    },
+                    'dommage le logiciel d\'acheté': {
+                        'impact': 4000,
+                        'fréquence': 3,
+                    },
+                    'les conflits inviduelle de travail': {
+                        'impact': 3000,
+                        'fréquence': 5,
+                    },
+                    'les conflits avec clients': {
+                        'impact': 10000,
+                        'fréquence': 5
+                    },
+                    'Incendie': {
+                        'impact': 20000,
+                        'fréquence': 2
+                    },
+                    'Explosion': {
+                        'impact': 20000,
+                        'fréquence': 2
+                    },
+                    'Dégât des eaux': {
+                        'impact': 8000,
+                        'fréquence': 2
+                    },
+                    'Machines': {
+                        'impact': 8000,
+                        'fréquence': 3
+                    },
+                    'Vol': {
+                        'impact': 10000,
+                        'fréquence': 1
+                    },
+                    'Arrêt de travail': {
+                        'impact': 2000,
+                        'fréquence': 5
+                    },
+                    'Soins courants': {
+                        'impact': 5000,
+                        'fréquence': 5
+                    }
+                },
+                'Future': {
+                    'Accident du travail': {
+                        'impact': 6000,
+                        'fréquence': 5
+                    },
+                    'endommagé du bien': {
+                        'impact': 1000,
+                        'fréquence': 5
+                    },
+                    'dommage le système informatique': {
+                        'impact': 1500,
+                        'fréquence': 3
+                    },
+                    'dommage le logiciel d\'acheté': {
+                        'impact': 4000,
+                        'fréquence': 3,
+                    },
+                    'les conflits inviduelle de travail': {
+                        'impact': 5000,
+                        'fréquence': 5,
+                    },
+                    'les conflits avec clients': {
+                        'impact': 12000,
+                        'fréquence': 5
+                    },
+                    'Incendie': {
+                        'impact': 20000,
+                        'fréquence': 2
+                    },
+                    'Explosion': {
+                        'impact': 20000,
+                        'fréquence': 2
+                    },
+                    'Dégât des eaux': {
+                        'impact': 8000,
+                        'fréquence': 2
+                    },
+                    'Machines': {
+                        'impact': 8000,
+                        'fréquence': 3
+                    },
+                    'Vol': {
+                        'impact': 10000,
+                        'fréquence': 1
+                    },
+                    'Arrêt de travail': {
+                        'impact': 6000,
+                        'fréquence': 5
+                    },
+                    'Soins courants': {
+                        'impact': 8000,
                         'fréquence': 5
                     }
                 }
@@ -150,6 +263,9 @@ def dash_app(server):
     }
     data_risk_ac = pd.DataFrame(data_risk['Alexandre']['Risques']['Actuel']).T
     data_risk_fu = pd.DataFrame(data_risk['Alexandre']['Risques']['Future']).T
+    data_risk_ac_Laura = pd.DataFrame(data_risk['Laura']['Risques']['Actuel']).T
+    data_risk_fu_Laura = pd.DataFrame(data_risk['Laura']['Risques']['Future']).T
+    # print(data_risk_ac.index)
     # print(data_risk['Alexandre']['Risques'].keys())
     # impact_cat = pd.cut(data_risk_df['impact'],5, labels=['ignore', 'faible', 'moyen', 'forte', 'catatrophe'])
     # impact_df = pd.qcut(data_risk_df['impact'],5)
@@ -208,22 +324,17 @@ def dash_app(server):
         }
     }
     app.layout = html.Div([
-        html.Div(id='page-content'),
-        dcc.Location(id='url', refresh=False),
+        # html.Div(id='page-content'),
+        # dcc.Location(id='url', refresh=False),
+        dcc.Tabs(id="tabs", value='alexandre', children=[
+        dcc.Tab(label='Alexandre', value='alexandre'),
+        dcc.Tab(label='Laura', value='laura'),
+        ]),
+        html.Div(id='page-content')
     ])
 
-
-    index_page = html.Div([
-        dcc.Link('Go to Profil de Alexandre', href='/Alexandre'),
-        html.Br(),
-        dcc.Link('Go to Profil de Laura', href='/Laura'),
-    ])
 
     page_1_layout = html.Div([
-        dcc.Link('Go to Profil de Laura', href='/Laura'),
-            html.Br(),
-            dcc.Link('Go back to home', href='/'),
-            html.H1(children='Risques Explosés'),
         html.Div([
             html.Div(
                 [
@@ -231,40 +342,152 @@ def dash_app(server):
                 ], style={'width':'60%', 'margin':'0 auto'}
             ),
             html.Div([
-                dcc.RadioItems(
-                    id='op',
-                    options=[
-                        {'label': 'Actuel', 'value': 'Actuel'},
-                        {'label': 'Future', 'value': 'Future'}
-                    ],
-                    value='Actuel'
-                ),
-                dcc.Graph(id='risk')
-                # dcc.Graph(
-                #     figure={
-                #         'data':[
-                #             # go.Scatter(
-                #             #     x = data_risk_fu['fréquence'],
-                #             #     y = data_risk_fu['impact'], 
-                #             #     mode = 'markers',
-                #             #     name='future'
-                #             # ),
-                #             go.Scatter(
-                #                 id='risk'
-                #                 x = data_risk_ac['fréquence'],
-                #                 y = data_risk_ac['impact'], 
-                #                 mode = 'markers',
-                #                 name='actuel'
-                #             ),
-                #         ],
-                #         'layout':{
-                #             'showlegend' : 'True',
-                #             'xaxis':{
-                #                 'tickvals':[i for i in range(1,6)],
-                #                 'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
-                #             },
-                #         }})
-            ], style={'width':'39%', 'display':'inline'}),
+                dcc.Graph(
+                    figure={
+                        'data': [
+                            go.Table(
+                                columnorder = [1,2],
+                                columnwidth = [20,40],
+                                header = dict(
+                                    values=[['Impact']],
+                                    height=40,
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = '#119DFF'),
+                                    align = ['left','center'],
+                                    font = dict(color = 'white', size = 12),
+                                ),
+                                cells = dict(
+                                    values=[
+                                        ['très significatif', 'Majeur', 'Modéré', 'Mineur', 'Non significatif'],\
+                                        ['> 20M €', '15M € à 20M €', '10M € à 15M €', '5M € à 10M €', '< 5M €']
+                                        ],
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = ['#25FEFD', 'white']),
+                                    align = ['left', 'center'],
+                                    font = dict(color = '#506784', size = 12),
+                                )
+
+                            )
+                        ]
+                    }
+                )
+            ], style={'width':'25%', 'display':'inline-block'}),
+            html.Div([
+                dcc.Graph(
+                    figure={
+                        'data':[
+                            # go.Scatter(
+                            #     x = data_risk_fu['fréquence'],
+                            #     y = data_risk_fu['impact'], 
+                            #     mode = 'markers',
+                            #     name='future'
+                            # ),
+                            go.Scatter(
+                                # id='risk',
+                                x = data_risk_ac['fréquence'],
+                                y = data_risk_ac['impact'],
+                                mode = 'markers+text',
+                                text = [i for i in range(1, data_risk_ac.shape[0]+1)],
+                                textposition='top right',
+                                name='actuel',
+                                marker = {
+                                    'color': 'green'
+                                },
+                                hoverinfo = 'x+y+text'
+                            ),
+                        ],
+                        'layout':{
+                            'title':'Alexandre Actuel',
+                            'showlegend' : 'True',
+                            'xaxis':{
+                                'title': 'Fréquence',
+                                'tickvals':[i for i in range(1,6)],
+                                'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
+                            },
+                            'hovermode':'closest',
+                            'hoverlabel': {
+                                'bgcolor':'violet',
+                                'font': {
+                                    'color': 'black'
+                                }
+                            }
+                        }})
+            ], style={'width':'49%', 'display':'inline-block'}),
+            html.Div([
+                dcc.Graph(
+                    figure={
+                        'data': [
+                            go.Table(
+                                columnorder = [1,2],
+                                columnwidth = [20,40],
+                                header = dict(
+                                    values=[[''],['Risques']],
+                                    height=40,
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = '#119DFF'),
+                                    align = ['left','center'],
+                                    font = dict(color = 'white', size = 12),
+                                ),
+                                cells = dict(
+                                    values=[
+                                        [i for i in range(1,len(data_risk_ac)+1)],
+                                        [i for i in data_risk_ac.index]
+                                        ],
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = ['#25FEFD', 'white']),
+                                    align = ['left', 'center'],
+                                    font = dict(color = '#506784', size = 12),
+                                )
+
+                            )
+                        ],
+                        'layout': {
+                            'scrollmode': False
+                        }
+                    }
+                )
+            ], style={'width':'25%', 'display':'inline-block', 'margin-right':'0px'}),
+            html.Div([
+                html.Div([
+                    # dcc.Markdown(dedent('''
+                    # ## Alexandre Future
+                    # ''')),
+                    dcc.Graph(
+                        figure={
+                            'data':[
+                                go.Scatter(
+                                    x = data_risk_fu['fréquence'],
+                                    y = data_risk_fu['impact'], 
+                                    mode = 'markers+text',
+                                    text = [i for i in range(1, data_risk_ac.shape[0]+1)],
+                                    textposition='top right',
+                                    name='future',
+                                    marker = {
+                                        'color': 'red'
+                                    }
+                                ),
+                            ],
+                            'layout':{
+                                'title':'Alexandre Future',
+                                'showlegend' : 'True',
+                                'xaxis':{
+                                    'title': 'Fréquence',
+                                    'tickvals':[i for i in range(1,6)],
+                                    'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
+                                },
+                                'hovermode':'closest',
+                                'hoverlabel': {
+                                    'bgcolor':'violet',
+                                    'font': {
+                                        'color': 'black'
+                                    }
+                                }
+                            }})
+                ], style={'width':'70%', 'display':'inline-block'}),
+            ],style={'margin-left':'20%'}),
+            dcc.Markdown(dedent('''
+                    ### Alexandre a fait face aux risques concernés Yeux (Optiques), Soins courants car il veux recruter des salariés
+                    ''')),
             html.Div([
                 dcc.Graph(
                     figure={
@@ -283,6 +506,7 @@ def dash_app(server):
                             ),
                         ],
                         'layout':{
+                            'title': 'Les risques correspondent aux offres d\'assurances',
                             'polar' : dict(
                             radialaxis = dict(
                                 visible = True,
@@ -293,27 +517,182 @@ def dash_app(server):
                         }})
             ], style={'width':'39%', 'display':'inline'}),
         ]),
-        html.Div([
+        
+    ])
+
+    page_2_layout = html.Div([
+            html.Div([
             html.Div(
                 [
                     html.Img(src='static/img/Laura.png', id='personas'),
-                ],style={'width':'60%', 'display':'inline-block'}
+                ], style={'width':'60%', 'margin':'0 auto'}
             ),
+            html.Div([
+                dcc.Graph(
+                    figure={
+                        'data': [
+                            go.Table(
+                                columnorder = [1,2],
+                                columnwidth = [20,40],
+                                header = dict(
+                                    values=[['Impact']],
+                                    height=40,
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = '#119DFF'),
+                                    align = ['left','center'],
+                                    font = dict(color = 'white', size = 12),
+                                ),
+                                cells = dict(
+                                    values=[
+                                        ['très significatif', 'Majeur', 'Modéré', 'Mineur', 'Non significatif'],\
+                                        ['> 20M €', '15M € à 20M €', '10M € à 15M €', '5M € à 10M €', '< 5M €']
+                                        ],
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = ['#25FEFD', 'white']),
+                                    align = ['left', 'center'],
+                                    font = dict(color = '#506784', size = 12),
+                                )
+
+                            )
+                        ]
+                    }
+                )
+            ], style={'width':'25%', 'display':'inline-block'}),
+            html.Div([
+                dcc.Graph(
+                    figure={
+                        'data':[
+                            # go.Scatter(
+                            #     x = data_risk_fu['fréquence'],
+                            #     y = data_risk_fu['impact'], 
+                            #     mode = 'markers',
+                            #     name='future'
+                            # ),
+                            go.Scatter(
+                                # id='risk',
+                                x = data_risk_ac_Laura['fréquence'],
+                                y = data_risk_ac_Laura['impact'],
+                                mode = 'markers+text',
+                                text = [i for i in range(1, data_risk_ac_Laura.shape[0]+1)],
+                                textposition='top right',
+                                name='actuel',
+                                marker = {
+                                    'color': 'green'
+                                },
+                                hoverinfo = 'x+y+text'
+                            ),
+                        ],
+                        'layout':{
+                            'title':'Laura Actuel',
+                            'showlegend' : 'True',
+                            'xaxis':{
+                                'title': 'Fréquence',
+                                'tickvals':[i for i in range(1,6)],
+                                'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
+                            },
+                            'hovermode':'closest',
+                            'hoverlabel': {
+                                'bgcolor':'violet',
+                                'font': {
+                                    'color': 'black'
+                                }
+                            }
+                        }})
+            ], style={'width':'49%', 'display':'inline-block'}),
+            html.Div([
+                dcc.Graph(
+                    figure={
+                        'data': [
+                            go.Table(
+                                columnorder = [1,2],
+                                columnwidth = [20,40],
+                                header = dict(
+                                    values=[[''],['Risques']],
+                                    height=40,
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = '#119DFF'),
+                                    align = ['left','center'],
+                                    font = dict(color = 'white', size = 12),
+                                ),
+                                cells = dict(
+                                    values=[
+                                        [i for i in range(1,len(data_risk_ac_Laura)+1)],
+                                        [i for i in data_risk_ac_Laura.index]
+                                        ],
+                                    line = dict(color = '#506784'),
+                                    fill = dict(color = ['#25FEFD', 'white']),
+                                    align = ['left', 'center'],
+                                    font = dict(color = '#506784', size = 12),
+                                )
+
+                            )
+                        ],
+                        'layout': {
+                            'scrollmode': False
+                        }
+                    }
+                )
+            ], style={'width':'25%', 'display':'inline-block', 'margin-right':'0px'}),
+            html.Div([
+                html.Div([
+                    # dcc.Markdown(dedent('''
+                    # ## Alexandre Future
+                    # ''')),
+                    dcc.Graph(
+                        figure={
+                            'data':[
+                                go.Scatter(
+                                    x = data_risk_fu_Laura['fréquence'],
+                                    y = data_risk_fu_Laura['impact'], 
+                                    mode = 'markers+text',
+                                    text = [i for i in range(1, data_risk_ac_Laura.shape[0]+1)],
+                                    textposition='top right',
+                                    name='future',
+                                    marker = {
+                                        'color': 'red'
+                                    }
+                                ),
+                            ],
+                            'layout':{
+                                'title':'Laura Future',
+                                'showlegend' : 'True',
+                                'xaxis':{
+                                    'title': 'Fréquence',
+                                    'tickvals':[i for i in range(1,6)],
+                                    'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
+                                },
+                                'hovermode':'closest',
+                                'hoverlabel': {
+                                    'bgcolor':'violet',
+                                    'font': {
+                                        'color': 'black'
+                                    }
+                                }
+                            }})
+                ], style={'width':'70%', 'display':'inline-block'}),
+            ],style={'margin-left':'20%'}),
+            dcc.Markdown(dedent('''
+                    ### Laura a fait face aux risques concernés Yeux (Optiques), Soins courants car il veux recruter des salariés
+                    ''')),
             html.Div([
                 dcc.Graph(
                     figure={
                         'data':[
                             go.Scatterpolar(
-                                name = "Laura",
+                                name = "Laura actuel",
                                 r = [val for key, val in data_score['Laura']['Actuel'].items()],
                                 theta = [key for key, val in data_score['Laura']['Actuel'].items()],
                                 fill = "toself",
-                                marker = dict(
-                                    color='orange'
-                                )
+                            ),
+                            go.Scatterpolar(
+                                name = "Laura future",
+                                r = [val for key, val in data_score['Laura']['Future'].items()],
+                                theta = [key for key, val in data_score['Laura']['Future'].items()],
+                                fill = "toself",
                             ),
                         ],
                         'layout':{
+                            'title': 'Les risques correspondent aux offres d\'assurances',
                             'polar' : dict(
                             radialaxis = dict(
                                 visible = True,
@@ -322,107 +701,19 @@ def dash_app(server):
                             ),
                             'showlegend' : 'True'
                         }})
-            ],style={'width':'39%', 'display':'inline-block'}),]),
+            ], style={'width':'39%', 'display':'inline'}),
+        ]),
+        
     ])
 
-    page_2_layout = html.Div([
-            dcc.Link('Go to Profil de Alexandre', href='/Alexandre'),
-            html.Br(),
-            dcc.Link('Go to Profil de Emillie', href='/Emilie'),
-            html.Br(),
-            dcc.Link('Go back to home', href='/'),
-            html.H1(children='Risques Explosés'),
-            html.Img(src=app.get_asset_url('Laura.png'), id='personas'),
-            html.Br(),
-            html.Br(),
-            html.Br(),
-
-    ])
-    page_3_layout = html.Div([
-            dcc.Link('Go to Profil de Alexandre', href='/Alexandre'),
-            html.Br(),
-            dcc.Link('Go to Profil de Laura', href='/Laura'),
-            html.Br(),
-            dcc.Link('Go back to home', href='/'),
-            html.H1(children='Risques Explosés'),
-            html.Img(src=app.get_asset_url('Emilie.png'), id='personas'),
-            html.Br(),
-            html.Br(),
-            html.Br(),
-
-    ])
-    @app.callback(dash.dependencies.Output('risk', 'figure'),
-    [dash.dependencies.Input('op', 'value')])
-    def update_graph(option):
-        if option == 'Actuel':
-            return {
-                    'data':[
-                        # go.Scatter(
-                        #     x = data_risk_fu['fréquence'],
-                        #     y = data_risk_fu['impact'], 
-                        #     mode = 'markers',
-                        #     name='future'
-                        # ),
-                        go.Scatter(
-                            x = data_risk_ac['fréquence'],
-                            y = data_risk_ac['impact'], 
-                            mode = 'markers',
-                            name='actuel'
-                        ),
-                    ],
-                    'layout':{
-                        'showlegend' : 'True',
-                        'xaxis':{
-                            'tickvals':[i for i in range(1,6)],
-                            'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
-                        },
-                        'yaxis': {
-                            'range':[0,20500],
-                            'autorange':False
-                        }
-                    }}
-        if option == 'Future':
-            return {
-                    'data':[
-                        go.Scatter(
-                            x = data_risk_fu['fréquence'],
-                            y = data_risk_fu['impact'], 
-                            mode = 'markers',
-                            name='future'
-                        ),
-                        # go.Scatter(
-                        #     id='risk'
-                        #     x = data_risk_ac['fréquence'],
-                        #     y = data_risk_ac['impact'], 
-                        #     mode = 'markers',
-                        #     name='actuel'
-                        # ),
-                    ],
-                    'layout':{
-                        'showlegend' : 'True',
-                        'xaxis':{
-                            'tickvals':[i for i in range(1,6)],
-                            'ticktext':['rare', 'peu rare', 'moyen', 'souvant', 'très souvant']
-                        },
-                        'yaxis': {
-                            'range':[0,20500],
-                            'autorange':False
-                        }
-                    }}
-    # Update the index
     @app.callback(dash.dependencies.Output('page-content', 'children'),
-                [dash.dependencies.Input('url', 'pathname')])
-    def display_page(pathname):
-        if pathname == '/Alexandre':
+              [dash.dependencies.Input('tabs', 'value')])
+    def render_content(tab):
+        if tab == 'alexandre':
             return page_1_layout
-        elif pathname == '/Laura':
+        elif tab == 'laura':
             return page_2_layout
-        elif pathname == '/Emilie':
-            return page_3_layout
-        else:
-            return index_page
-        # You could also return a 404 "URL not found" page here
-    return app
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
