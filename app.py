@@ -11,7 +11,7 @@ def home():
 
 @server.route('/')
 def render_dashboard():
-    return flask
+    return page_carto
 
 if __name__ == '__main__':
     server.run(debug=True)

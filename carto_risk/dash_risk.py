@@ -341,6 +341,7 @@ def dash_app(server):
                     html.Img(src='static/img/Alexandre.png', id='personas'),
                 ], style={'width':'60%', 'margin':'0 auto'}
             ),
+            # html.Button('Print PDF',id="button-print",style={'position': "absolute", 'top': '50', 'right': '0'}),
             html.Div([
                 dcc.Graph(
                     figure={
@@ -713,7 +714,11 @@ def dash_app(server):
             return page_1_layout
         elif tab == 'laura':
             return page_2_layout
-
+    # add js file
+    external_js = ['https://code.jquery.com/jquery-3.2.1.min.js','static/js/print.js']
+    for js in external_js:
+        app.scripts.append_script({"external_url": js})
+    return app
 
 if __name__ == '__main__':
     app.run_server(debug=True)
