@@ -12,7 +12,10 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #list_of_images = [os.path.basename(x) for x in glob.glob('{}*.png'.format(image_directory))]
 #static_image_route = '/static/'
 #print(list_of_images)
-external_stylesheets = ['static/css/main.css']
+external_stylesheets = ['static/css/main.css', \
+'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',\
+'https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',\
+'https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css']
 # print(helpq(go.Table))
 def dash_app(server):
     app = dash.Dash(__name__,server=server, external_stylesheets=external_stylesheets)
@@ -335,12 +338,13 @@ def dash_app(server):
 
 
     page_1_layout = html.Div([
+        html.H4("Profile de Alexandre", style={'background-color':'rgba(256,0,0,0.6)','text-align':'center'}),
         html.Div([
-            html.Div(
-                [
-                    html.Img(src='static/img/Alexandre.png', id='personas'),
-                ], style={'width':'60%', 'margin':'0 auto'}
-            ),
+                html.Img(src='static/img/Alexandre.png', id='personas'),
+            ], style={'width':'60%', 'margin':'0 auto'}
+        ),
+        html.H4("Cartographique des risques", style={'background-color':'rgba(256,0,0,0.6)','text-align':'center'}),
+        html.Div([
             # html.Button('Print PDF',id="button-print",style={'position': "absolute", 'top': '50', 'right': '0'}),
             html.Div([
                 dcc.Graph(
@@ -377,12 +381,6 @@ def dash_app(server):
                 dcc.Graph(
                     figure={
                         'data':[
-                            # go.Scatter(
-                            #     x = data_risk_fu['fréquence'],
-                            #     y = data_risk_fu['impact'], 
-                            #     mode = 'markers',
-                            #     name='future'
-                            # ),
                             go.Scatter(
                                 # id='risk',
                                 x = data_risk_ac['fréquence'],
@@ -486,9 +484,174 @@ def dash_app(server):
                             }})
                 ], style={'width':'70%', 'display':'inline-block'}),
             ],style={'margin-left':'20%'}),
-            dcc.Markdown(dedent('''
-                    ### Alexandre a fait face aux risques concernés Yeux (Optiques), Soins courants car il veux recruter des salariés
-                    ''')),
+            html.Div([
+                dcc.Markdown(dedent('''
+                Alexandre a fait face aux risques concernés Yeux (Optiques), Soins courants car il veux recruter des salariés
+                '''))], style={'display':'inline-block', 'margin-left':'20%'}
+            ),
+            html.H4("Risques potentiels", style={'background-color':'rgba(256,0,0,0.6)','text-align':'center'}),
+            html.Div([
+                    dcc.Graph(
+                        id='graph-3',
+                        figure = {
+                            'data': [
+                                go.Scatter(
+                                    x = ["0", "0.18", "0.18", "0"],
+                                    y = ["0.2", "0.2", "0.4", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.2)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "B",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.2", "0.38", "0.38", "0.2", "0.2"],
+                                    y = ["0.2", "0.2", "0.6", "0.4", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.4)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "D",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.4", "0.58", "0.58", "0.4", "0.4"],
+                                    y = ["0.2", "0.2", "0.8", "0.6", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.6)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "F",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.6", "0.78", "0.78", "0.6", "0.6"],
+                                    y = ["0.2", "0.2", "1", "0.8", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgb(31, 119, 180)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "H",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.8", "0.98", "0.98", "0.8", "0.8"],
+                                    y = ["0.2", "0.2", "1.2", "1", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.8)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "J",
+                                    showlegend = False
+                                ),
+                            ],
+                            'layout': go.Layout(
+                                title = "",
+                                annotations = [
+                                    {
+                                      "x": 0.69,
+                                      "y": 0.6,
+                                      "font": {
+                                        "color": "rgb(31, 119, 180)",
+                                        "family": "Raleway",
+                                        "size": 30
+                                      },
+                                      "showarrow": False,
+                                      "text": "<b>4</b>",
+                                      "xref": "x",
+                                      "yref": "y"
+                                    },
+                                    {
+                                      "x": 0.0631034482759,
+                                      "y": -0.04,
+                                      "align": "left",
+                                      "font": {
+                                        "color": "rgb(44, 160, 44)",
+                                        "family": "Raleway",
+                                        "size": 10
+                                      },
+                                      "showarrow": False,
+                                      "text": "<b>Risques faibles</b>",
+                                      "xref": "x",
+                                      "yref": "y"
+                                    },
+                                    {
+                                      "x": 0.92125,
+                                      "y": -0.04,
+                                      "align": "right",
+                                      "font": {
+                                        "color": "rgb(214, 39, 40)",
+                                        "family": "Raleway",
+                                        "size": 10
+                                      },
+                                      "showarrow": False,
+                                      "text": "<b>Risques forts</b>",
+                                      "xref": "x",
+                                      "yref": "y"
+                                    }
+                                  ],
+                                  autosize = False,
+                                  height = 200,
+                                  width = 340,
+                                  hovermode = "closest",
+                                  margin = {
+                                    "r": 10,
+                                    "t": 20,
+                                    "b": 80,
+                                    "l": 10
+                                  },
+                                  shapes = [
+                                    {
+                                      "fillcolor": "rgb(255, 255, 255)",
+                                      "line": {
+                                        "color": "rgb(31, 119, 180)",
+                                        "width": 4
+                                      },
+                                      "opacity": 1,
+                                      "type": "circle",
+                                      "x0": 0.621,
+                                      "x1": 0.764,
+                                      "xref": "x",
+                                      "y0": 0.135238095238,
+                                      "y1": 0.98619047619,
+                                      "yref": "y"
+                                    }
+                                  ],
+                                  showlegend = True,
+                                  xaxis = {
+                                    "autorange": False,
+                                    "fixedrange": True,
+                                    "range": [-0.05, 1.05],
+                                    "showgrid": False,
+                                    "showticklabels": False,
+                                    "title": "<br>",
+                                    "type": "linear",
+                                    "zeroline": False
+                                  },
+                                  yaxis = {
+                                    "autorange": False,
+                                    "fixedrange": True,
+                                    "range": [-0.3, 1.6],
+                                    "showgrid": False,
+                                    "showticklabels": False,
+                                    "title": "<br>",
+                                    "type": "linear",
+                                    "zeroline": False
+                                }
+                            )
+                        },
+                        config={
+                            'displayModeBar': False
+                        }
+                    )
+                ],style={'width':'39%', 'display':'inline-block', 'margin-top':'20px', 'margin-left':'35%'}),
+            html.H4("La proposition au niveau de protection", style={'background-color':'rgba(256,0,0,0.6)','text-align':'center'}),
             html.Div([
                 dcc.Graph(
                     figure={
@@ -522,12 +685,14 @@ def dash_app(server):
     ])
 
     page_2_layout = html.Div([
-            html.Div([
+            html.H4('Profil de Laura', style={'background-color':'rgba(256,0,0,0.6)', 'text-align':'center'}),
             html.Div(
                 [
                     html.Img(src='static/img/Laura.png', id='personas'),
                 ], style={'width':'60%', 'margin':'0 auto'}
             ),
+            html.H4('Cartographique des risques', style={'background-color':'rgba(256,0,0,0.6)', 'text-align':'center'}),
+            html.Div([
             html.Div([
                 dcc.Graph(
                     figure={
@@ -672,9 +837,174 @@ def dash_app(server):
                             }})
                 ], style={'width':'70%', 'display':'inline-block'}),
             ],style={'margin-left':'20%'}),
-            dcc.Markdown(dedent('''
-                    ### Laura a fait face aux risques concernés Yeux (Optiques), Soins courants car il veux recruter des salariés
-                    ''')),
+            html.Div([
+                dcc.Markdown(dedent('''
+                Laura a fait face aux risques concernés la machine au niveau de vol, explosition, accident au travailcar elle veux acheter le scooter et ce scooter concerne au salarité etc...
+                '''))], style={'display':'inline-block', 'margin-left':'20%', 'margin-right':'20%'}
+            ),
+            html.H4('Risques potentiels', style={'background-color':'rgba(256,0,0,0.6)', 'text-align':'center'}),
+            html.Div([
+                    dcc.Graph(
+                        id='graph-3',
+                        figure = {
+                            'data': [
+                                go.Scatter(
+                                    x = ["0", "0.18", "0.18", "0"],
+                                    y = ["0.2", "0.2", "0.4", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.2)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "B",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.2", "0.38", "0.38", "0.2", "0.2"],
+                                    y = ["0.2", "0.2", "0.6", "0.4", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.4)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "D",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.4", "0.58", "0.58", "0.4", "0.4"],
+                                    y = ["0.2", "0.2", "0.8", "0.6", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.6)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "F",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.6", "0.78", "0.78", "0.6", "0.6"],
+                                    y = ["0.2", "0.2", "1", "0.8", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgb(31, 119, 180)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "H",
+                                    showlegend = False
+                                ),
+                                go.Scatter(
+                                    x = ["0.8", "0.98", "0.98", "0.8", "0.8"],
+                                    y = ["0.2", "0.2", "1.2", "1", "0.2"],
+                                    fill = "tozerox",
+                                    fillcolor = "rgba(31, 119, 180, 0.8)",
+                                    hoverinfo = "none",
+                                    line = {"width": 0},
+                                    mode = "lines",
+                                    name = "J",
+                                    showlegend = False
+                                ),
+                            ],
+                            'layout': go.Layout(
+                                title = "",
+                                annotations = [
+                                    {
+                                      "x": 0.49,
+                                      "y": 0.6,
+                                      "font": {
+                                        "color": "rgb(31, 119, 180)",
+                                        "family": "Raleway",
+                                        "size": 30
+                                      },
+                                      "showarrow": False,
+                                      "text": "<b>3</b>",
+                                      "xref": "x",
+                                      "yref": "y"
+                                    },
+                                    {
+                                      "x": 0.0631034482759,
+                                      "y": -0.04,
+                                      "align": "left",
+                                      "font": {
+                                        "color": "rgb(44, 160, 44)",
+                                        "family": "Raleway",
+                                        "size": 10
+                                      },
+                                      "showarrow": False,
+                                      "text": "<b>Risques faibles</b>",
+                                      "xref": "x",
+                                      "yref": "y"
+                                    },
+                                    {
+                                      "x": 0.92125,
+                                      "y": -0.04,
+                                      "align": "right",
+                                      "font": {
+                                        "color": "rgb(214, 39, 40)",
+                                        "family": "Raleway",
+                                        "size": 10
+                                      },
+                                      "showarrow": False,
+                                      "text": "<b>Risques forts</b>",
+                                      "xref": "x",
+                                      "yref": "y"
+                                    }
+                                  ],
+                                  autosize = False,
+                                  height = 200,
+                                  width = 340,
+                                  hovermode = "closest",
+                                  margin = {
+                                    "r": 10,
+                                    "t": 20,
+                                    "b": 80,
+                                    "l": 10
+                                  },
+                                  shapes = [
+                                    {
+                                      "fillcolor": "rgb(255, 255, 255)",
+                                      "line": {
+                                        "color": "rgb(31, 119, 180)",
+                                        "width": 4
+                                      },
+                                      "opacity": 1,
+                                      "type": "circle",
+                                      "x0": 0.42,
+                                      "x1": 0.56,
+                                      "xref": "x",
+                                      "y0": 0.135238095238,
+                                      "y1": 0.98619047619,
+                                      "yref": "y"
+                                    }
+                                  ],
+                                  showlegend = True,
+                                  xaxis = {
+                                    "autorange": False,
+                                    "fixedrange": True,
+                                    "range": [-0.05, 1.05],
+                                    "showgrid": False,
+                                    "showticklabels": False,
+                                    "title": "<br>",
+                                    "type": "linear",
+                                    "zeroline": False
+                                  },
+                                  yaxis = {
+                                    "autorange": False,
+                                    "fixedrange": True,
+                                    "range": [-0.3, 1.6],
+                                    "showgrid": False,
+                                    "showticklabels": False,
+                                    "title": "<br>",
+                                    "type": "linear",
+                                    "zeroline": False
+                                }
+                            )
+                        },
+                        config={
+                            'displayModeBar': False
+                        }
+                    )
+                ],style={'width':'39%', 'display':'inline-block', 'margin-top':'20px', 'margin-left':'35%'}),
+            html.H4('La proposition au niveau de protection', style={'background-color':'rgba(256,0,0,0.6)', 'text-align':'center'}),
             html.Div([
                 dcc.Graph(
                     figure={
@@ -718,6 +1048,7 @@ def dash_app(server):
     external_js = ['https://code.jquery.com/jquery-3.2.1.min.js','static/js/print.js']
     for js in external_js:
         app.scripts.append_script({"external_url": js})
+
     return app
 
 if __name__ == '__main__':
